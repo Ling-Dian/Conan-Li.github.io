@@ -1,0 +1,49 @@
+h1{font-size:200%;}
+h2{font-size:75%;}
+h3{font-size:150%; font-family:Arial, sans-serif;}
+i{color:#a0a0a0;}
+body{background-color:#193545;}
+
+#Header{
+	font-family:Arial, sans-serif;
+	padding: 1em;
+	background-color:#306273;
+	color:#ffffff;
+}
+
+#Link{
+	font-family:Arial, sans-serif;
+	padding: 1em;
+	background-color:#748e9a;
+}
+
+#Description, #Share, #Relative_Photos, #Reviews{
+	padding: 1.5em 1em;
+	background-color:#ffffff;
+}
+#Description{padding: 1.5em 1em 0.5em;}
+#Share{padding: 0em 1em;}
+#Reviews{padding: 0em 1em:}
+
+#Description img{
+	border: solid;
+    padding: 5px;
+    border-color: #a0a0a0;
+    border-width: 1px;
+}
+
+.Reviewer{color: #a0a0a0; font-style: italic;}
+
+.Review {border-bottom: 1px dashed black;}
+
+#Bottom{
+	font-family:Arial, sans-serif;
+	padding: 1em;
+	background-color:#306273;
+	color:#ffffff;
+}
+#Bottom small{font-style: italic;}
+
+
+
+	

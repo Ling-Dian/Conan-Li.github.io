@@ -1,0 +1,62 @@
+body{
+    background-image:url("../Image/boats-dock-jetty-2534620.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    margin: 0em 0em 0em 8em;
+    font-family: Calibri,sans-serif;
+}
+header{
+    color: black;
+    background-image:url("../Image/1.png");
+    background-repeat: no-repeat;
+    padding: 0.5em;
+}
+header h1{
+    font-size:300%;
+    padding:10px;
+    font-family:Six Caps, Arial, sans-serif;
+    font-weight:bold;
+	letter-spacing:0.05em;
+}
+header p {
+    font-size: 100%;
+    font-weight: bolder;
+    padding: 1em;
+}
+.ArtStore h1 {
+    background-image: url("../Image/2.png");
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    font-size: 150%;
+    padding: 10px 10px 10px 20px;
+}
+.ArtStore .UC {
+    background-image: url("../Image/3.png") ;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+}
+.ArtStore .UC h2 {
+    font-size: 150%;
+    padding: 20px;
+}
+.ArtStore .UC p {
+    background-image: url("../Image/4.png");
+    background-repeat: no-repeat;
+    color: white;
+    font-size: 18px;
+    padding: 10px 0px 10px 20px;
+    margin-left: 1em;
+}
+.ArtStore .UC br {
+    font-size: 2px;
+}
+.ArtStore .contact {
+    background-image: url("../Image/2.png");
+    background-repeat: no-repeat;
+}
+.ArtStore .contact p {
+    padding: 15px;
+}
+.ArtStore .contact a {
+    text-decoration: underline dashed;
+}

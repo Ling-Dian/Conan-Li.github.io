@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conan Li's Homepage</title>
+
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div id="wrapper">
+	<div class="overlay"></div>
+
+	<!-- Sidebar -->
+	<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+		<ul class="nav sidebar-nav">
+			<li class="sidebar-brand">
+				<a href="#">
+				   Links
+				</a>
+			</li>
+			<li>
+				<a href="#Homepage"><i class="fa fa-fw fa-home"></i> Homepage</a>
+			</li>
+			<li>
+				<a href="#AboutMe"><i class="fa fa-fw fa-folder"></i> About Me</a>
+			</li>
+			<li>
+				<a href="#Assignments"><i class="fa fa-fw fa-file-o"></i> Assignments</a>
+			</li>
+			<li>
+				<a href="#Picture"><i class="fa fa-fw fa-cog"></i> Favorite Picture</a>
+			</li>
+			<li>
+				<a href="#Video" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-plus"></i> Favorite Video</a>
+			</li>
+			<li>
+				<a href="#Sports"><i class="fa fa-fw fa-dropbox"></i> Favorite Sports</a>
+			</li>
+			<li>
+				<a href="#ContactMe"><i class="fa fa-fw fa-twitter"></i>  Contact Me</a>
+			</li>
+		</ul>
+	</nav>
+	<!-- /#sidebar-wrapper -->
+
+	<!-- Page Content -->
+	<div id="page-content-wrapper">
+	  <button type="button" class="hamburger is-closed animated fadeInLeft" data-toggle="offcanvas">
+		<span class="hamb-top"></span>
+		<span class="hamb-middle"></span>
+		<span class="hamb-bottom"></span>
+	  </button>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+					<h1 class="page-header" id=Homepage>Conan Li's Homepage</h1>
+					<small style="color:#ffffff">Project One for IAD: Personal Homepage</small>
+					<br><br><br><br><br>
+					<h2 id=AboutMe>About Me</h2>
+					<p class="lead"><br> I am 李科男 from Chengdu, Sichuan, China. I have been studying <i>Computer Science and Technology</i> in Jinan University for two years. </p>
+					<br><br><br>
+					
+					<h2 id=Assignments>Assignments</h2>
+					<ul>
+						<li><a href="chapter02-project01.html">chapter02-project01</a></li>
+						<li><a href="chapter02-project03.html">chapter02-project03</a></li>
+						<li><a href="chapter03-project01.html">chapter03-project01</a></li>
+						<li><a href="chapter03-project03.html">chapter03-project03</a></li>
+					</ul>
+					<br><br><br>
+					
+					<h2 id=Picture>Favorite Picture</h2><br>
+					<a href="Image/dawn-dusk-fisherman-2410407.jpg" target="_blank"><img src="Image/dawn-dusk-fisherman-2410407.jpg" alt="Dawn Dusk Fisherman" title="Dawn Dusk Fisherman" width="730px" height="547px"></a>
+					<br><br><br><br><br>
+					
+					<h2 id=Video>Favorite Video</h2>
+					<iframe src="http://player.bilibili.com/player.html?aid=68818070&cid=119263586&page=1" width="750px" height="550px" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+					<br><br>
+					<blockquote>The 70th National Day of China is coming. Here are 102 different video uploders singing <strong>「我和我的祖国」</strong>（English Meaning: My Motherland and Me) together to celebrate it.</blockquote>
+					<br><br><br>
+					
+					<h2 id=Sports>Favorite Sports</h2>
+					<p>These are my favorite sports:</p>
+					<ul>
+						<li><p>Bicycle</p></li>
+						<li><p>Swimming</p></li>
+						<li><p>Basketball</p></li>
+						<li><p>Esports</p></li>
+					</ul>
+					<br><br><br>
+					
+					<h2 id=ContactMe>Contact Me</h2>
+					<p><br>Email: 634878485@qq.com<br>
+					Tel: +86 18144350081</p>
+					<br><br><br>
+					<hr>
+					<p style="font-size:45px">&#160&#160&#160&#160&#160	<img src=Image/wula.gif width="49px" height="40.5px" align="top"> Thanks for Your Visiting! <img src=Image/wula.gif width="49px" height="40.5px" align="top"></p>
+					<br><br><br>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+	  var trigger = $('.hamburger'),
+		  overlay = $('.overlay'),
+		 isClosed = false;
+
+		trigger.click(function () {
+		  hamburger_cross();      
+		});
+
+		function hamburger_cross() {
+
+		  if (isClosed == true) {          
+			overlay.hide();
+			trigger.removeClass('is-open');
+			trigger.addClass('is-closed');
+			isClosed = false;
+		  } else {   
+			overlay.show();
+			trigger.removeClass('is-closed');
+			trigger.addClass('is-open');
+			isClosed = true;
+		  }
+	  }
+	  
+	  $('[data-toggle="offcanvas"]').click(function () {
+			$('#wrapper').toggleClass('toggled');
+	  });  
+	});
+</script>
+
+</body>
+</html>
