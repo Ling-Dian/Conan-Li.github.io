@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>Online Map</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+	<link rel="stylesheet" href="css/assignment2.css">
+
+</head>
+<body>
+<br>
+<h1>The weather and surrounding road condition of Panyu Campus</h1>
+<br>
+
+<div id="container"></div>
+<div class="input-card" style="width: auto;">
+    <div class="input-item">
+        <button class="btn" onclick="toggle()">显示/隐藏实时路况</button>
+    </div>
+</div>
+<div class="info">
+	<h3>番禺校区</h3><br>
+	<h4>今日天气</h4><hr>
+    <p id='forecast1'></p>
+	<br>
+    <h4>未来天气</h4><hr>
+    <p id='forecast2'></p>
+</div>
+<script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=646eba98568642ed6f4f1e76186d04b9"></script>
+
+<script type="text/javascript">
+
+	
+	var map = new AMap.Map("container",{
+		center:new AMap.LngLat(113.415481,23.017187),
+		zoom:16
+		});		
+
+	var trafficLayer = new AMap.TileLayer.Traffic({
+        zIndex: 16
+    });
+
+    trafficLayer.setMap(map);
+
+    var isVisible = true;
+    function toggle() {
+        if (isVisible) {
+            trafficLayer.hide();
+            isVisible = false;
+        } else {
+            trafficLayer.show();
+            isVisible = true;
+        }
+	}
+	
+	AMap.plugin('AMap.ToolBar',
+            function(){
+                toolopt = {
+                    offset :new AMap.Pixel(10,10),
+                    position : 'LT',
+                    ruler : true,//标尺键盘是否可见，默认为true
+                    noIpLocate : true,//定位失败后，是否开启IP定位，默认为false
+                    locate : true,//是否显示定位按钮，默认为false
+                    liteStyle : false,//是否使用精简模式，默认为false
+                    direction : false,//方向键盘是否可见，默认为true
+                    autoPosition : true,//是否自动定位，即地图初始化加载完成后，是否自动定位的用户所在地，在支持HTML5的浏览器中有效，默认为false
+                    locationMarker : AMap.Marker({map: map}),
+                    useNative : true
+                }
+                var toolbar  = new AMap.ToolBar(toolopt);
+                //toolbar.hide();//隐藏toolbar
+
+                map.addControl(toolbar);
+                //启动监听
+                toolbar.on('location',function(){
+                    alert('您的位置是：'+ toolbar.getLocation());    
+                })
+            });
+
+    AMap.plugin('AMap.Weather', function() {
+        var weather = new AMap.Weather();
+        //查询实时天气信息
+        weather.getLive('440113', function(err, data) {
+			console.log(err, data);
+            if (!err) {
+                var str = [];
+                str.push('<h4 >实时天气' + '</h4><hr>');
+                str.push('<p>城市/区：' + data.city + '</p>');
+                str.push('<p>天气：' + data.weather + '</p>');
+                str.push('<p>温度：' + data.temperature + '℃</p>');
+                str.push('<p>风向：' + data.windDirection + '</p>');
+                str.push('<p>风力：' + data.windPower + ' 级</p>');
+                str.push('<p>空气湿度：' + data.humidity + '</p>');
+                str.push('<p>发布时间：' + data.reportTime + '</p>');
+				str.push("<a target='_blank' href='https://www.jnu.edu.cn/' >学校官网</a>");
+                var marker = new AMap.Marker({map: map, position: map.getCenter()});
+                var infoWindow = new AMap.InfoWindow({
+					
+                    content: '<div class="info" style="position:inherit;margin-bottom:0;">'+str.join('')+'</div><div class="sharp"></div>',
+                    
+					isCustom:true,
+                    offset: new AMap.Pixel(0, -37)
+                });
+                infoWindow.open(map, marker.getPosition());
+                marker.on('mouseover', function() {
+                    infoWindow.open(map, marker.getPosition());
+
+                });
+            }
+        });
+		
+		
+        //未来天气预报
+        weather.getForecast('440113', function(err, data) {
+            if (err) {return;}
+            var str = [];
+			dayWeather = data.forecasts[0];
+            str.push(dayWeather.date+' <span class="weather">'+dayWeather.dayWeather+'</span> '+ dayWeather.nightTemp + '~' + dayWeather.dayTemp + '℃');
+			document.getElementById('forecast1').innerHTML = str.join('<br>');
+			var str = [];
+            for (var i = 1,dayWeather; i < data.forecasts.length; i++) {
+                dayWeather = data.forecasts[i];
+                str.push(dayWeather.date+' <span class="weather">'+dayWeather.dayWeather+'</span> '+ dayWeather.nightTemp + '~' + dayWeather.dayTemp + '℃');
+            }
+            document.getElementById('forecast2').innerHTML = str.join('<br>');
+        });
+    });
+</script>
+<br><h2><a href="index.html" target="_blank">Go back homepage</a></h1>
+</body>
+</html>
